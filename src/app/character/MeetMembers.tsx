@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AGENT_MEMBERS, type AgentMember } from "@/data/agents";
 
@@ -16,10 +16,46 @@ function initialSession(member: AgentMember): Session {
   return { line: member.welcomeMessages[0], log: [], stars: 0 };
 }
 
+// 吹き出しの文字を一文字ずつ出す（旧サイトのストリーミング表示の思想を、会話の場所へ移植）
+function SpeechBubble({ text }: { text: string }) {
+  const chars = Array.from(text);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCount(chars.length);
+      return;
+    }
+    setCount(0);
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setCount(i);
+      if (i >= chars.length) clearInterval(id);
+    }, 35);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
+
+  const typing = count < chars.length;
+  return (
+    <div className="mt-5 rounded-2xl bg-purple-50 p-4 leading-relaxed" aria-label={text}>
+      {chars.slice(0, count).join("")}
+      {typing && (
+        <span
+          aria-hidden
+          className="ml-0.5 inline-block h-4 w-[2px] translate-y-[3px] animate-pulse bg-purple-300"
+        />
+      )}
+    </div>
+  );
+}
+
 export default function MeetMembers() {
   const [selectedId, setSelectedId] = useState("luna");
   const [sessions, setSessions] = useState<Record<string, Session>>({});
   const [tab, setTab] = useState<"log" | "profile">("profile");
+  const [utterance, setUtterance] = useState(0);
 
   const member = AGENT_MEMBERS[selectedId];
   const session = sessions[selectedId] ?? initialSession(member);
@@ -38,11 +74,13 @@ export default function MeetMembers() {
       },
     }));
     setTab("log");
+    setUtterance((u) => u + 1);
   };
 
   const select = (id: string) => {
     setSelectedId(id);
     setTab("profile");
+    setUtterance((u) => u + 1);
   };
 
   return (
@@ -100,9 +138,10 @@ export default function MeetMembers() {
         <p className="mt-4 leading-relaxed text-purple-950/80">{member.bio}</p>
 
         {/* 挨拶の吹き出し */}
-        <div className="mt-5 rounded-2xl bg-purple-50 p-4 leading-relaxed">
-          {session.line}
-        </div>
+        <SpeechBubble
+          key={`${selectedId}:${utterance}`}
+          text={session.line}
+        />
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <button
             onClick={talk}
