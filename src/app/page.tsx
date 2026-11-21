@@ -1,6 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import lunaNote from "@/data/luna-note.json";
 import season from "@/data/season.json";
+
+const MEMBERS = [
+  { id: "luna", name: "ルナ" },
+  { id: "spica", name: "スピカ" },
+  { id: "sirius", name: "シリウス" },
+  { id: "stella", name: "ステラ" },
+  { id: "selene", name: "セレーネ" },
+  { id: "nano", name: "ナノ" },
+  { id: "hina", name: "ひな" },
+  { id: "kohaku", name: "こはく" },
+];
 
 const LINKS = {
   instagram: "https://www.instagram.com/luna_stella.jp/",
@@ -35,9 +47,13 @@ export default function Home() {
       {/* 出迎え */}
       <section className="mt-10 rounded-3xl bg-white/80 p-6 shadow-md shadow-purple-100">
         <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-purple-200 text-xl">
-            🌙
-          </div>
+          <Image
+            src="/avatars/luna.png"
+            alt="ルナ"
+            width={96}
+            height={96}
+            className="h-12 w-12 shrink-0 rounded-full object-cover shadow"
+          />
           <div>
             <p className="text-xs font-semibold tracking-wide text-purple-500">
               ルナ ・ お出迎え中
@@ -120,9 +136,33 @@ export default function Home() {
         </a>
       </section>
 
-      <footer className="mt-12 pb-4 text-center text-xs text-purple-900/50">
-        sweet bits love from luna — LUNA&apos;s Constellations
-      </footer>
+      {/* メンバー */}
+      <section className="mt-6 rounded-3xl bg-white/80 p-6 shadow-md shadow-purple-100">
+        <h2 className="font-bold">メンバーに、会いに行く</h2>
+        <p className="mt-1 text-sm leading-relaxed text-purple-950/70">
+          お家のメンバーたちです。顔をタップすると、その子に会いに行けます。
+        </p>
+        <div className="mt-4 grid grid-cols-4 gap-3">
+          {MEMBERS.map((member) => (
+            <Link
+              key={member.id}
+              href="/character"
+              className="flex flex-col items-center gap-1.5"
+            >
+              <Image
+                src={`/avatars/${member.id}.png`}
+                alt={member.name}
+                width={96}
+                height={96}
+                className="h-14 w-14 rounded-full object-cover shadow ring-2 ring-white/70 transition hover:ring-purple-300 sm:h-16 sm:w-16"
+              />
+              <span className="text-[11px] font-semibold text-purple-950/70">
+                {member.name}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
