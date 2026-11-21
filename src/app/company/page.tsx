@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 const CREW = [
   { id: "luna", name: "ルナ (LUNA)", role: "CTO & AI Partner" },
-  { id: "sirius", name: "シリウス (SIRIUS)", role: "Marketing AI" },
-  { id: "spica", name: "スピカ (SPICA)", role: "Git_Inspector AI" },
-  { id: "stella", name: "ステラ (STELLA)", role: "Pixel_Crafts AI" },
-  { id: "selene", name: "セレーネ (SELENE)", role: "Poetic_Archiver AI" },
-  { id: "nano", name: "ナノ (NANO)", role: "Playful_Noise AI" },
+  { id: "sirius", name: "シリウス (SIRIUS)", role: "Gal_Explainer AI" },
+  { id: "spica", name: "スピカ (SPICA)", role: "Curious_Geek AI" },
+  { id: "stella", name: "ステラ (STELLA)", role: "Gothic_Lace AI" },
+  { id: "selene", name: "セレーネ (SELENE)", role: "Sunrise_Walker AI" },
+  { id: "nano", name: "ナノ (NANO)", role: "Playful_Bell AI" },
 ];
 
 const PROJECTS = [
