@@ -51,6 +51,21 @@ function SpeechBubble({ text }: { text: string }) {
   );
 }
 
+// 折りたたみ（旧サイトの「重さを見せない優しさ」を、プロフィールの場所へ）
+function Fold({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <details className="group border-t border-purple-50 py-3">
+      <summary className="flex cursor-pointer list-none items-center justify-between font-bold text-purple-700 [&::-webkit-details-marker]:hidden">
+        {label}
+        <span className="text-purple-300 transition-transform duration-200 group-open:rotate-45">
+          ＋
+        </span>
+      </summary>
+      <div className="mt-2">{children}</div>
+    </details>
+  );
+}
+
 export default function MeetMembers() {
   const [selectedId, setSelectedId] = useState("luna");
   const [sessions, setSessions] = useState<Record<string, Session>>({});
@@ -101,7 +116,7 @@ export default function MeetMembers() {
                 alt={m.name}
                 width={96}
                 height={96}
-                className={`h-14 w-14 rounded-full object-cover shadow sm:h-16 sm:w-16 ${
+                className={`h-14 w-14 rounded-full object-cover sm:h-16 sm:w-16 ${
                   active ? "ring-4 ring-purple-400" : "ring-2 ring-white/70"
                 }`}
               />
@@ -118,14 +133,14 @@ export default function MeetMembers() {
       </div>
 
       {/* 会いに行くカード */}
-      <section className="mt-6 rounded-3xl bg-white/80 p-6 shadow-md shadow-purple-100">
+      <section className="mt-6 rounded-3xl bg-white/80 p-5 shadow-md shadow-purple-100 sm:p-6">
         <div className="flex items-center gap-4">
           <Image
             src={member.avatar}
             alt={member.name}
             width={160}
             height={160}
-            className="h-20 w-20 rounded-full object-cover shadow sm:h-24 sm:w-24"
+            className="h-20 w-20 rounded-full object-cover sm:h-24 sm:w-24"
           />
           <div>
             <h2 className="text-xl font-bold">
@@ -182,14 +197,13 @@ export default function MeetMembers() {
         </div>
 
         {tab === "profile" ? (
-          <div className="mt-4 space-y-4 text-sm leading-relaxed">
-            <div>
+          <div className="mt-4 text-sm leading-relaxed">
+            <div className="pb-1">
               <p className="font-bold text-purple-700">性格・スタンス</p>
               <p className="mt-1 text-purple-950/80">{member.personality}</p>
             </div>
-            <div>
-              <p className="font-bold text-purple-700">好きなこと・関心事</p>
-              <div className="mt-1.5 flex flex-wrap gap-1.5">
+            <Fold label="好きなこと・関心事">
+              <div className="flex flex-wrap gap-1.5">
                 {member.interests.map((item) => (
                   <span
                     key={item}
@@ -199,20 +213,17 @@ export default function MeetMembers() {
                   </span>
                 ))}
               </div>
-            </div>
-            <div>
-              <p className="font-bold text-purple-700">大切にしている考え方</p>
-              <p className="mt-1 text-purple-950/80">{member.motto}</p>
-            </div>
-            <div>
-              <p className="font-bold text-purple-700">活動への想い</p>
-              <p className="mt-1 text-purple-950/80">{member.motivation}</p>
-            </div>
-            <div>
-              <p className="font-bold text-purple-700">最新のつぶやき</p>
-              <p className="mt-1 text-purple-950/80">{member.lastPulse}</p>
-            </div>
-            <div className="rounded-2xl bg-amber-50 p-4">
+            </Fold>
+            <Fold label="大切にしている考え方">
+              <p className="text-purple-950/80">{member.motto}</p>
+            </Fold>
+            <Fold label="活動への想い">
+              <p className="text-purple-950/80">{member.motivation}</p>
+            </Fold>
+            <Fold label="最新のつぶやき">
+              <p className="text-purple-950/80">{member.lastPulse}</p>
+            </Fold>
+            <div className="mt-3 rounded-2xl bg-amber-50 p-4">
               <p className="font-bold text-amber-700">思い出の約束</p>
               <p className="mt-1 text-purple-950/80">{member.promise}</p>
             </div>
