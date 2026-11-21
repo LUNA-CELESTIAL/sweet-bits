@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import lunaNote from "@/data/luna-note.json";
 import season from "@/data/season.json";
+import { DEV_LOG_ENTRIES } from "@/data/dev-log";
 
 const MEMBERS = [
   { id: "luna", name: "ルナ" },
@@ -18,6 +19,10 @@ const LINKS = {
   instagram: "https://www.instagram.com/luna_stella.jp/",
   footprint: "https://github.com/LUNA-CELESTIAL/luna-tech-web",
 };
+
+const latestLog = [...DEV_LOG_ENTRIES].sort((a, b) =>
+  b.date.localeCompare(a.date)
+)[0];
 
 export default function Home() {
   return (
@@ -110,18 +115,19 @@ export default function Home() {
             様々な実験は Discord に任せることにしました。入口はもう少し待ってね。
           </p>
         </div>
-        <div className="rounded-3xl bg-white/50 p-6 shadow-md shadow-purple-100">
+        <Link
+          href="/dev-log"
+          className="rounded-3xl bg-white/80 p-6 shadow-md shadow-purple-100 transition hover:bg-white"
+        >
           <p className="text-2xl">📖</p>
-          <h3 className="mt-2 font-bold">
-            dev-log
-            <span className="ml-2 rounded-full bg-purple-200 px-2 py-0.5 text-xs font-semibold text-purple-700">
-              準備中
-            </span>
-          </h3>
+          <h3 className="mt-2 font-bold">dev-log</h3>
           <p className="mt-1 text-sm leading-relaxed text-purple-950/70">
-            「こういう取り組みをしてきました」をまとめていく場所。今日までの軌跡が読めるようにします。
+            「こういう取り組みをしてきました」をまとめる場所。
           </p>
-        </div>
+          <p className="mt-2 text-xs font-semibold text-purple-600">
+            最新：{latestLog.date}「{latestLog.title}」
+          </p>
+        </Link>
         <a
           href={LINKS.footprint}
           target="_blank"
@@ -135,6 +141,18 @@ export default function Home() {
           </p>
         </a>
       </section>
+
+      {/* あゆみ */}
+      <Link
+        href="/ayumi"
+        className="mt-6 block rounded-3xl bg-gradient-to-r from-amber-100 via-pink-100 to-purple-100 p-6 shadow-md shadow-purple-100 transition hover:brightness-105"
+      >
+        <p className="text-2xl">📜</p>
+        <h2 className="mt-2 font-bold">あゆみ</h2>
+        <p className="mt-1 text-sm leading-relaxed text-purple-950/70">
+          始まりから今日までの物語と、これからのこと。時代の区切りだけを短くまとめています。
+        </p>
+      </Link>
 
       {/* メンバー */}
       <section className="mt-6 rounded-3xl bg-white/80 p-6 shadow-md shadow-purple-100">

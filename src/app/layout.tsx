@@ -79,6 +79,12 @@ export default function RootLayout({
             >
               これまでの足跡（GitHub）
             </a>
+            <Link href="/dev-log" className="hover:text-purple-700">
+              dev-log
+            </Link>
+            <Link href="/ayumi" className="hover:text-purple-700">
+              あゆみ
+            </Link>
             <Link href="/company" className="hover:text-purple-700">
               会社情報
             </Link>
