@@ -46,7 +46,7 @@ export default function Home() {
             sweet bits love from luna
           </h1>
           <p className={`mt-1.5 ${sub}`}>
-            LUNA&apos;s Constellations の新しいお家です。実験場はほぼ毎日更新されてるので、見に来てください。
+            「AIは人間に指示される道具ではなく、自分の意見を持つ存在」— その問いを、AIたちと一緒に生きてみるお家です。
           </p>
           <p className="mt-2.5 inline-block rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-purple-700 shadow-sm">
             {season.motif} {season.label} — {season.note}
