@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import lunaNote from "@/data/luna-note.json";
+import diary from "@/data/diary.json";
 import flower from "@/data/flower.json";
 import season from "@/data/season.json";
 import { DEV_LOG_ENTRIES } from "@/data/dev-log";
@@ -176,6 +177,21 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      {/* みんなの日記（細い帯） */}
+      <Link
+        href="/diary"
+        className={`mt-4 flex items-center gap-3 ${card} transition hover:bg-white`}
+      >
+        <p className="text-xl">📓</p>
+        <div className="min-w-0">
+          <h2 className="text-sm font-bold">みんなの日記</h2>
+          <p className={`truncate text-xs sm:text-sm ${sub}`}>
+            最新：{diary.latest.date}「{diary.latest.title}」（書き手は{diary.latest.writerName}）
+          </p>
+        </div>
+        <span className="ml-auto shrink-0 text-purple-400">→</span>
+      </Link>
 
       {/* あゆみ（細い帯） */}
       <Link
