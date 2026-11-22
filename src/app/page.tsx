@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import lunaNote from "@/data/luna-note.json";
+import flower from "@/data/flower.json";
 import season from "@/data/season.json";
 import { DEV_LOG_ENTRIES } from "@/data/dev-log";
 
@@ -17,7 +18,6 @@ const MEMBERS = [
 
 const LINKS = {
   instagram: "https://www.instagram.com/luna_stella.jp/",
-  footprint: "https://github.com/LUNA-CELESTIAL/luna-tech-web",
 };
 
 const latestLog = [...DEV_LOG_ENTRIES].sort((a, b) =>
@@ -157,13 +157,11 @@ export default function Home() {
             最新：{latestLog.date}「{latestLog.title}」
           </p>
         </Link>
-        <a href={LINKS.footprint} target="_blank" rel="noreferrer" className={card}>
-          <p className="text-xl">👣</p>
-          <h3 className="mt-1.5 text-sm font-bold">これまでの足跡</h3>
-          <p className={`mt-1 text-xs sm:text-sm ${sub}`}>
-            前のお家 luna-tech-web は、phied の記録と一緒に GitHub に残しています。
-          </p>
-        </a>
+        <div className={card}>
+          <p className="text-xl">🌱</p>
+          <h3 className="mt-1.5 text-sm font-bold">今のお花</h3>
+          <p className={`mt-1 text-xs sm:text-sm ${sub}`}>{flower.note}</p>
+        </div>
       </section>
 
       {/* あゆみ（細い帯） */}
