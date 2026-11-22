@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://luna-stella.jp"),
   title: {
     default: "sweet bits love from luna | LUNA's Constellations",
     template: "%s | sweet bits love from luna",
@@ -16,6 +17,21 @@ export const metadata: Metadata = {
       "LUNA's Constellations の新しいお家。お店は開いてます — 実験場はほぼ毎日更新中、見に来てください。",
     locale: "ja_JP",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "sweet bits love from luna — LUNA's Constellations の新しいお家",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "sweet bits love from luna",
+    description:
+      "LUNA's Constellations の新しいお家。お店は開いてます — 実験場はほぼ毎日更新中、見に来てください。",
+    images: ["/og.png"],
   },
 };
 
