@@ -180,7 +180,10 @@ export default function Home() {
       {/* あゆみ（細い帯） */}
       <Link
         href="/ayumi"
-        className={`mt-4 flex items-center gap-3 rounded-3xl bg-gradient-to-r from-amber-100 via-pink-100 to-purple-100 p-4 shadow-md shadow-purple-100 transition hover:brightness-105 sm:p-5`}
+        className={`mt-4 flex items-center gap-3 rounded-3xl p-4 shadow-md shadow-purple-100 transition hover:brightness-105 sm:p-5`}
+        style={{
+          backgroundImage: `linear-gradient(to right, ${season.palette.from}, ${season.palette.via}, ${season.palette.to})`,
+        }}
       >
         <p className="text-xl">📜</p>
         <div>
