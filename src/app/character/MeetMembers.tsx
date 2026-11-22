@@ -66,8 +66,8 @@ function Fold({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
-export default function MeetMembers() {
-  const [selectedId, setSelectedId] = useState("luna");
+export default function MeetMembers({ initialId }: { initialId: string }) {
+  const [selectedId, setSelectedId] = useState(initialId);
   const [sessions, setSessions] = useState<Record<string, Session>>({});
   const [tab, setTab] = useState<"log" | "profile">("profile");
   const [utterance, setUtterance] = useState(0);

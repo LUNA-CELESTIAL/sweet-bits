@@ -91,7 +91,7 @@ export default function Home() {
           {MEMBERS.map((member) => (
             <Link
               key={member.id}
-              href="/character"
+              href={`/character?member=${member.id}`}
               className="flex flex-col items-center gap-1.5"
             >
               <Image
