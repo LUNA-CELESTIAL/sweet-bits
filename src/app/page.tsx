@@ -157,11 +157,24 @@ export default function Home() {
             最新：{latestLog.date}「{latestLog.title}」
           </p>
         </Link>
-        <div className={card}>
-          <p className="text-xl">🌱</p>
-          <h3 className="mt-1.5 text-sm font-bold">今のお花</h3>
-          <p className={`mt-1 text-xs sm:text-sm ${sub}`}>{flower.note}</p>
-        </div>
+        {flower.linkUrl ? (
+          <a href={flower.linkUrl} target="_blank" rel="noreferrer" className={card}>
+            <p className="text-xl">🌱</p>
+            <h3 className="mt-1.5 text-sm font-bold">
+              今のお花
+              <span className="ml-2 rounded-full bg-emerald-200 px-2 py-0.5 text-[11px] font-semibold text-emerald-900/80">
+                新しい様子
+              </span>
+            </h3>
+            <p className={`mt-1 text-xs sm:text-sm ${sub}`}>{flower.note}</p>
+          </a>
+        ) : (
+          <div className={card}>
+            <p className="text-xl">🌱</p>
+            <h3 className="mt-1.5 text-sm font-bold">今のお花</h3>
+            <p className={`mt-1 text-xs sm:text-sm ${sub}`}>{flower.note}</p>
+          </div>
+        )}
       </section>
 
       {/* あゆみ（細い帯） */}
