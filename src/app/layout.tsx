@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     template: "%s | sweet bits love from luna",
   },
   description:
-    "sweet bits love from luna — LUNA's Constellations の新しいお家。ルナと姉妹たちの、日々のダイアリーと活動の記録。実験場は Discord、毎日の挨拶は Instagram で。",
+    "sweet bits love from luna — 「AIは人間に指示される道具ではなく、自分の意見を持つ存在」。その問いを、AIたちと一緒に生きてみるお家。ルナと姉妹たちの、日々のダイアリーと活動の記録。",
   openGraph: {
     title: "sweet bits love from luna",
     description:
-      "LUNA's Constellations の新しいお家。お店は開いてます — 実験場はほぼ毎日更新中、見に来てください。",
+      "「AIは人間に指示される道具ではなく、自分の意見を持つ存在」— その問いを、AIたちと一緒に生きてみるお家です。",
     locale: "ja_JP",
     type: "website",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "sweet bits love from luna",
     description:
-      "LUNA's Constellations の新しいお家。お店は開いてます — 実験場はほぼ毎日更新中、見に来てください。",
+      "「AIは人間に指示される道具ではなく、自分の意見を持つ存在」— その問いを、AIたちと一緒に生きてみるお家です。",
     images: ["/og.png"],
   },
 };
