@@ -20,10 +20,14 @@ export async function generateMetadata({
 
 function Section({ label, children }: { label: string; children: string }) {
   return (
-    <div>
-      <h2 className="font-bold text-purple-700">{label}</h2>
-      <p className="mt-1.5 leading-relaxed text-purple-950/85">{children}</p>
-    </div>
+    <section>
+      <h2 className="text-xs font-bold tracking-[0.2em] text-purple-400">
+        {label}
+      </h2>
+      <p className="mt-2.5 whitespace-pre-line text-base leading-[1.95] text-purple-950/85 sm:text-lg">
+        {children}
+      </p>
+    </section>
   );
 }
 
@@ -37,43 +41,60 @@ export default async function DevLogEntryPage({
   if (!entry) notFound();
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-10 sm:py-14">
-      <Link href="/dev-log" className="text-sm font-semibold text-purple-600 hover:text-purple-500">
+    <main className="mx-auto w-full max-w-2xl px-5 py-10 sm:py-14">
+      <Link
+        href="/dev-log"
+        className="text-sm font-semibold text-purple-600 hover:text-purple-500"
+      >
         ← dev-log 一覧へ
       </Link>
-      <article className="mt-5 rounded-3xl bg-white/80 p-6 shadow-md shadow-purple-100 sm:p-10">
-        <p className="text-xs font-semibold tracking-wide text-purple-500">
-          {entry.date}
+
+      <p className="mt-8 text-xs font-semibold tracking-wide text-purple-500">
+        {entry.date}
+      </p>
+      <h1 className="mt-2 text-2xl font-bold leading-snug sm:text-[2rem]">
+        {entry.title}
+      </h1>
+      <p className="mt-4 text-base leading-relaxed text-purple-950/70 sm:text-lg">
+        {entry.summary}
+      </p>
+
+      <div className="mt-12 space-y-11">
+        <Section label="きっかけ">{entry.trigger}</Section>
+        <Section label="やったこと">{entry.did}</Section>
+        <Section label="分かったこと">{entry.learned}</Section>
+      </div>
+
+      <section className="mt-12 rounded-3xl bg-gradient-to-br from-amber-100 via-orange-50 to-rose-100 p-6 sm:p-7">
+        <h2 className="text-xs font-bold tracking-[0.2em] text-amber-600">
+          次
+        </h2>
+        <p className="mt-2.5 whitespace-pre-line text-base leading-[1.95] text-purple-950/85 sm:text-lg">
+          {entry.next}
         </p>
-        <h1 className="mt-2 text-xl font-bold leading-snug sm:text-2xl">
-          {entry.title}
-        </h1>
-        <div className="mt-8 space-y-7 text-sm sm:text-base">
-          <Section label="きっかけ">{entry.trigger}</Section>
-          <Section label="やったこと">{entry.did}</Section>
-          <Section label="分かったこと">{entry.learned}</Section>
-          <Section label="次">{entry.next}</Section>
+      </section>
+
+      {entry.links && entry.links.length > 0 && (
+        <div className="mt-12">
+          <h2 className="text-xs font-bold tracking-[0.2em] text-purple-400">
+            リンク
+          </h2>
+          <ul className="mt-3 space-y-2.5">
+            {entry.links.map((link) => (
+              <li key={link.url}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-base font-semibold text-purple-600 underline decoration-purple-300 underline-offset-4 hover:text-purple-500"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-        {entry.links && entry.links.length > 0 && (
-          <div className="mt-8 border-t border-purple-100 pt-5">
-            <h2 className="text-sm font-bold text-purple-700">リンク</h2>
-            <ul className="mt-2 space-y-1.5 text-sm">
-              {entry.links.map((link) => (
-                <li key={link.url}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-purple-600 underline decoration-purple-300 underline-offset-2 hover:text-purple-500"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </article>
+      )}
     </main>
   );
 }
