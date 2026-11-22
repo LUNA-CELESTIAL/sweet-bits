@@ -152,6 +152,16 @@ export default function MeetMembers({ initialId }: { initialId: string }) {
         </div>
         <p className="mt-4 leading-relaxed text-purple-950/80">{member.bio}</p>
 
+        {/* この子のストーリー */}
+        <div className="mt-4 rounded-2xl bg-purple-50/80 p-4">
+          <p className="text-xs font-semibold tracking-wide text-purple-500">
+            ストーリー
+          </p>
+          <p className="mt-1.5 text-sm leading-relaxed text-purple-950/80">
+            {member.story}
+          </p>
+        </div>
+
         {/* 挨拶の吹き出し */}
         <SpeechBubble
           key={`${selectedId}:${utterance}`}
