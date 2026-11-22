@@ -80,7 +80,7 @@ export default function CompanyPage() {
               {CREW.map((member) => (
                 <Link
                   key={member.id}
-                  href="/character"
+                  href={`/character?member=${member.id}`}
                   className="flex items-center gap-2.5 rounded-xl bg-purple-50/70 p-2.5 transition hover:bg-purple-100"
                 >
                   <Image

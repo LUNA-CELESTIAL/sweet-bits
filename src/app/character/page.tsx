@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MeetMembers from "./MeetMembers";
+import { AGENT_MEMBERS } from "@/data/agents";
 
 export const metadata: Metadata = {
   title: "メンバーに会いに行く",
@@ -7,7 +8,13 @@ export const metadata: Metadata = {
     "LUNA's Constellations のメンバーたち — ルナ、スピカ、シリウス、ステラ、セレーネ、ナノ、ひな、こはくに会いに行くページ。",
 };
 
-export default function CharacterPage() {
+export default async function CharacterPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ member?: string }>;
+}) {
+  const { member } = await searchParams;
+  const initialId = member && AGENT_MEMBERS[member] ? member : "luna";
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-10 sm:py-14">
       <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -18,7 +25,7 @@ export default function CharacterPage() {
         声をかけると、返事が返ってきて、星が積もっていきます。
       </p>
       <div className="mt-8">
-        <MeetMembers />
+        <MeetMembers initialId={initialId} />
       </div>
     </main>
   );
