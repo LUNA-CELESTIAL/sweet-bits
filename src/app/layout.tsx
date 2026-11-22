@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
+import season from "@/data/season.json";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://luna-stella.jp"),
@@ -48,7 +49,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="flex min-h-screen flex-col bg-gradient-to-b from-pink-100 via-purple-100 to-sky-100 font-sans text-purple-950">
+      <body
+        className="flex min-h-screen flex-col font-sans text-purple-950"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, ${season.palette.from}, ${season.palette.via}, ${season.palette.to})`,
+        }}
+      >
         <header className="mx-auto flex w-full max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 pt-5">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
