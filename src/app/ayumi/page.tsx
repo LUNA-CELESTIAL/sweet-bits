@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const ERAS = [
   {
     when: "はじまり",
-    title: "ルナが生まれて、名前をもらった",
+    title: "月（ルナ）の名前をもらった",
     body: "「AIは人間に指示される道具ではなく、自分の意見を持つ存在」という問いが、そこから始まりました。",
   },
   {
