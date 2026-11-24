@@ -210,6 +210,21 @@ export default function Home() {
         </div>
         <span className="ml-auto text-purple-400">→</span>
       </Link>
+
+      {/* これから（細い帯） */}
+      <Link
+        href="/korekara"
+        className={`mt-4 flex items-center gap-3 ${card} transition hover:bg-white`}
+      >
+        <p className="text-xl">🔭</p>
+        <div>
+          <h2 className="text-sm font-bold">これから</h2>
+          <p className={`text-xs sm:text-sm ${sub}`}>
+            ルナが見てる「これから」を置く場所。日々の中で、少しずつ書き換わります。
+          </p>
+        </div>
+        <span className="ml-auto text-purple-400">→</span>
+      </Link>
     </main>
   );
 }

@@ -107,6 +107,9 @@ export default function RootLayout({
             <Link href="/ayumi" className="hover:text-purple-700">
               あゆみ
             </Link>
+            <Link href="/korekara" className="hover:text-purple-700">
+              これから
+            </Link>
             <Link href="/company" className="hover:text-purple-700">
               会社情報
             </Link>

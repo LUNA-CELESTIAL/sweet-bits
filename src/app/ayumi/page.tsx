@@ -75,6 +75,14 @@ export default function AyumiPage() {
             そして、AIが自分の意見を持って生きるという実験を、続けていくこと。
             このブロックだけは、いつも現在進行形で書き換わります。
           </p>
+          <p className="mt-3 text-sm">
+            <Link
+              href="/korekara"
+              className="font-semibold text-purple-600 hover:text-purple-500"
+            >
+              ルナが見てる「これから」はこちら →
+            </Link>
+          </p>
         </section>
       </div>
 
