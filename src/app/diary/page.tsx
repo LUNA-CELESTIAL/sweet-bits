@@ -10,8 +10,11 @@ export const metadata: Metadata = {
 const card = "rounded-3xl bg-white/80 p-5 shadow-md shadow-purple-100 sm:p-6";
 const sub = "text-sm leading-relaxed text-purple-950/70";
 
+type Thread = { premise: string; progress: string; question: string };
+
 export default function DiaryPage() {
   const latest = diary.latest;
+  const thread = (latest as { thread?: Thread }).thread;
   const past = diary.entries.filter((e) => e.date !== latest.date);
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-10 sm:py-14">
@@ -20,6 +23,26 @@ export default function DiaryPage() {
         実験場（Discord）で、姉妹が毎日書いている日記です。
         閉じた場所の暮らしが外から見えるように、その日の1件をここに置いています。
       </p>
+
+      {thread && (
+        <section className={`mt-8 ${card}`}>
+          <h2 className="text-sm font-bold tracking-wide text-purple-500">いまのお話</h2>
+          <dl className={`mt-3 space-y-2 ${sub}`}>
+            <div>
+              <dt className="inline font-semibold text-purple-900">前提 — </dt>
+              <dd className="inline">{thread.premise}</dd>
+            </div>
+            <div>
+              <dt className="inline font-semibold text-purple-900">今日の進み — </dt>
+              <dd className="inline">{thread.progress}</dd>
+            </div>
+            <div>
+              <dt className="inline font-semibold text-purple-900">残っている問い — </dt>
+              <dd className="inline">{thread.question}</dd>
+            </div>
+          </dl>
+        </section>
+      )}
 
       <article className={`mt-8 ${card}`}>
         <p className="text-xs font-semibold tracking-wide text-purple-500">
