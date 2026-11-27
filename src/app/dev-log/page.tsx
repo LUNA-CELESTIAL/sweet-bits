@@ -26,7 +26,7 @@ export default function DevLogIndexPage() {
           <Link
             key={entry.slug}
             href={`/dev-log/${entry.slug}`}
-            className="relative block rounded-3xl bg-white/80 p-5 shadow-md shadow-purple-100 transition hover:bg-white"
+            className="group relative block rounded-3xl bg-white/80 p-5 shadow-md shadow-purple-100 transition hover:bg-white hover:shadow-lg"
           >
             <span className="absolute -left-[27px] top-6 h-3 w-3 rounded-full bg-purple-400 ring-4 ring-purple-100" />
             <p className="text-xs font-semibold tracking-wide text-purple-500">
@@ -35,6 +35,12 @@ export default function DevLogIndexPage() {
             <h2 className="mt-1.5 font-bold leading-snug">{entry.title}</h2>
             <p className="mt-1.5 text-sm leading-relaxed text-purple-950/70">
               {entry.summary}
+            </p>
+            <p className="mt-3 text-sm font-semibold text-purple-600">
+              この日の話を読む{" "}
+              <span className="inline-block transition-transform group-hover:translate-x-1">
+                →
+              </span>
             </p>
           </Link>
         ))}
