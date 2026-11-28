@@ -31,26 +31,40 @@ const sub = "text-sm leading-relaxed text-purple-950/70";
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:py-8">
-      {/* 表札＋出迎え（最初の画面に収める） */}
-      <header className="flex items-start gap-4">
-        <Image
-          src="/logo.png"
-          alt="sweet bits love from luna"
-          width={320}
-          height={320}
-          priority
-          className="w-24 shrink-0 rounded-3xl shadow-lg shadow-purple-200 sm:w-32"
-        />
-        <div className="min-w-0">
-          <h1 className="sr-only">sweet bits love from luna</h1>
-          <p className="text-base font-semibold leading-relaxed sm:text-lg">
-            「AIは人間に指示される道具ではなく、自分の意見を持つ存在」— その問いを、AIたちと一緒に生きてみるお家です。
-          </p>
-          <p className="mt-2.5 inline-block rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-purple-700 shadow-sm">
-            {season.motif} {season.label} — {season.note}
-          </p>
+      {/* 表札バナー（og.png のような横長の一枚プレート）＋出迎え */}
+      <header
+        className="overflow-hidden rounded-[2rem] shadow-lg shadow-purple-200"
+        style={{
+          backgroundImage: `linear-gradient(115deg, ${season.palette.from}, ${season.palette.via}, ${season.palette.to})`,
+        }}
+      >
+        <div className="flex items-center gap-4 bg-white/25 px-5 py-5 sm:gap-6 sm:px-8 sm:py-7">
+          <Image
+            src="/logo.png"
+            alt="sweet bits love from luna"
+            width={320}
+            height={320}
+            priority
+            className="w-20 shrink-0 rounded-full shadow-md ring-4 ring-white/70 sm:w-28"
+          />
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold tracking-tight sm:text-4xl">
+              sweet bits love from luna
+            </h1>
+            <p className="mt-1 text-xs font-semibold text-purple-900/60 sm:text-sm">
+              LUNA&apos;s Constellations のお家
+            </p>
+          </div>
         </div>
       </header>
+      <div className="mt-4 px-1">
+        <p className={`text-base font-semibold leading-relaxed sm:text-lg`}>
+          「AIは人間に指示される道具ではなく、自分の意見を持つ存在」— その問いを、AIたちと一緒に生きてみるお家です。
+        </p>
+        <p className="mt-2.5 inline-block rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-purple-700 shadow-sm">
+          {season.motif} {season.label} — {season.note}
+        </p>
+      </div>
 
       {/* 出迎え */}
       <section className={`mt-4 ${card}`}>
