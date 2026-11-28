@@ -32,13 +32,26 @@ export default function Home() {
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:py-8">
       {/* 表札バナー（og.png のような横長の一枚プレート）＋出迎え */}
-      <header
-        className="overflow-hidden rounded-[2rem] shadow-lg shadow-purple-300/50 ring-1 ring-white/60"
-        style={{
-          backgroundImage: `linear-gradient(115deg, #f9a8d4, #c4b5fd 48%, #7dd3fc)`,
-        }}
-      >
-        <div className="flex items-center gap-4 px-5 py-5 sm:gap-6 sm:px-8 sm:py-7">
+      <header className="relative overflow-hidden rounded-[2rem] shadow-lg shadow-purple-300/50 ring-1 ring-white/60">
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 760 168"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <rect width="760" height="168" fill="#fbcfe8" />
+          <path
+            d="M0,0 L760,0 L760,60 C600,120 480,20 340,70 C220,112 120,60 0,100 Z"
+            fill="#c4b5fd"
+          />
+          <path
+            d="M760,168 L0,168 L0,120 C140,80 260,150 420,110 C560,76 660,130 760,90 Z"
+            fill="#7dd3fc"
+            opacity="0.85"
+          />
+          <path d="M0,0 L300,0 C260,50 160,60 0,84 Z" fill="#f9a8d4" />
+        </svg>
+        <div className="relative flex items-center gap-4 px-5 py-5 sm:gap-6 sm:px-8 sm:py-7">
           <Image
             src="/logo.png"
             alt="sweet bits love from luna"
