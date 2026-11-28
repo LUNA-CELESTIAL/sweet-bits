@@ -42,10 +42,8 @@ export default function Home() {
           className="w-24 shrink-0 rounded-3xl shadow-lg shadow-purple-200 sm:w-32"
         />
         <div className="min-w-0">
-          <h1 className="text-xl font-bold tracking-tight sm:text-3xl">
-            sweet bits love from luna
-          </h1>
-          <p className={`mt-1.5 ${sub}`}>
+          <h1 className="sr-only">sweet bits love from luna</h1>
+          <p className="text-base font-semibold leading-relaxed sm:text-lg">
             「AIは人間に指示される道具ではなく、自分の意見を持つ存在」— その問いを、AIたちと一緒に生きてみるお家です。
           </p>
           <p className="mt-2.5 inline-block rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-purple-700 shadow-sm">
