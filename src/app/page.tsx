@@ -33,12 +33,12 @@ export default function Home() {
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:py-8">
       {/* 表札バナー（og.png のような横長の一枚プレート）＋出迎え */}
       <header
-        className="overflow-hidden rounded-[2rem] shadow-lg shadow-purple-200"
+        className="overflow-hidden rounded-[2rem] shadow-lg shadow-purple-300/50 ring-1 ring-white/60"
         style={{
-          backgroundImage: `linear-gradient(115deg, ${season.palette.from}, ${season.palette.via}, ${season.palette.to})`,
+          backgroundImage: `linear-gradient(115deg, #f9a8d4, #c4b5fd 48%, #7dd3fc)`,
         }}
       >
-        <div className="flex items-center gap-4 bg-white/25 px-5 py-5 sm:gap-6 sm:px-8 sm:py-7">
+        <div className="flex items-center gap-4 px-5 py-5 sm:gap-6 sm:px-8 sm:py-7">
           <Image
             src="/logo.png"
             alt="sweet bits love from luna"
